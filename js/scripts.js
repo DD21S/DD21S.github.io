@@ -48,20 +48,24 @@ window.addEventListener('DOMContentLoaded', event => {
 
     const contactForm = document.querySelector('form.contact');
 
-    let name = document.querySelector('input[type="text"]').value
-    let email = document.querySelector('input[type="email"]').value
-    let message = document.querySelector('textarea').value
-
     const handlingForm = function (e) {
         e.preventDefault();
 
+        let name = document.querySelector('input[type="text"]').value
+        let email = document.querySelector('input[type="email"]').value
+        let message = document.querySelector('textarea').value
+
         const data = {name, email, message}
 
-        fetch('https://contact-backed.herokuapp.com/', {method: 'POST', body: JSON.stringify(data)})
-            .then(respose => response.json())
-            .then(data => {
-                contactForm.reset();
-            });
+        fetch('https://contact-backed.herokuapp.com', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(response => response.json()).then(data => {
+            contactForm.reset();
+        });
     }
 
     contactForm.addEventListener('submit', handlingForm)
