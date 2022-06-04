@@ -154,22 +154,22 @@ body {
   align-items: center;
 }
 .portfolio-item:nth-child(1) {
-  background-color: #D94697;
+  background-color: #28B560;
 }
 .portfolio-item:nth-child(2) {
-  background-color: #697474;
+  background-color: #A2246B;
 }
 .portfolio-item:nth-child(3) {
-  background-color: #397EC9;
+  background-color: #697474;  
 }
 .portfolio-item:nth-child(4) {
-  background-color: #A2246B;
+  background-color: #397EC9;
 }
 .portfolio-item:nth-child(5) {
   background-color: #222E5A;
 }
 .portfolio-item:nth-child(6) {
-  background-color: #28B560;
+  background-color: #D94697;
 }
 .portfolio-item:nth-child(7) {
   background-color: #855AC7;
