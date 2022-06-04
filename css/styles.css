@@ -227,22 +227,23 @@ body {
 .contact input:focus, .contact textarea:focus {
   outline: none;
 }
-.contact input:invalid, .contact textarea:invalid {
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(255,71,71,1);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(255,71,71,1);  
-  box-shadow: 0px 0px 20px 0px rgba(255,71,71,1);
-}
-.contact input:focus:invalid, .contact textarea:focus:invalid {
-  box-shadow: none;
-}
-.contact input:valid, .contact textarea:valid {
-  box-shadow: none;
-}
 .contact textarea {
   height: 10rem;
 }
 .contact .btn-success {
   margin-top: 1rem;
+}
+.messages {
+  margin: 0 0 1rem;
+  color: red;
+  display: none;
+  text-align: left;
+}
+#success-message {
+  color: var(--primary);
+}
+#success-message, #error-message {
+  margin: 1rem 0;
 }
 .btn-success {
   color: #ffffff;

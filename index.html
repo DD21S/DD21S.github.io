@@ -165,10 +165,15 @@
                 <!-- Contact Section Form-->
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
-                        <form class="contact">
-                            <input type="text" placeholder="Name" required maxlength="16" />
-                            <input type="email" placeholder="Email" required maxlength="128" />
-                            <textarea placeholder="Your message" required maxlength="400"></textarea>
+                        <form class="contact" id="contactForm">
+                            <input type="text" id="fname" placeholder="Name" maxlength="32" />
+                            <span id="name-message" class="messages">This field is required.</span>
+                            <input type="email" id="femail" placeholder="Email" maxlength="128" />
+                            <span id="email-message" class="messages">Invalid email.</span>
+                            <textarea id="ftext" placeholder="Your message" maxlength="400"></textarea>
+                            <span id="text-message" class="messages">This field is required.</span>
+                            <span id="success-message" class="messages">Message sent successfully.</span>
+                            <span id="error-message" class="messages">An error has occurred.</span>
                             <button class="btn btn-xl btn-success" type="submit">Send Message</button>
                         </form>
                     </div>

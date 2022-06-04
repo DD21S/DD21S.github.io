@@ -46,26 +46,57 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    const contactForm = document.querySelector('form.contact');
+    const validateEmail = function (email) {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    }
+
+    const contactForm = document.querySelector('#contactForm');
 
     const handlingForm = function (e) {
         e.preventDefault();
 
-        let name = document.querySelector('input[type="text"]').value
-        let email = document.querySelector('input[type="email"]').value
-        let message = document.querySelector('textarea').value
+        document.querySelector("#success-message").style.display = "none";
+        document.querySelector("#error-message").style.display = "none";
 
-        const data = {name, email, message}
+        let name = contactForm['fname'].value
+        let email = contactForm['femail'].value
+        let message = contactForm['ftext'].value
 
-        fetch('https://contact-backed.herokuapp.com', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify(data)
-        }).then(response => response.json()).then(data => {
-            contactForm.reset();
-        });
+        if (name == "") {
+            document.querySelector("#name-message").style.display = "block";
+        } else if (email == "" || !validateEmail(email)) {
+            document.querySelector("#name-message").style.display = "none";
+            document.querySelector("#email-message").style.display = "block";
+        } else if (message == "") {
+            document.querySelector("#name-message").style.display = "none";
+            document.querySelector("#email-message").style.display = "none";
+            document.querySelector("#text-message").style.display = "block";
+        } else {
+
+            document.querySelector("#name-message").style.display = "none";
+            document.querySelector("#email-message").style.display = "none";
+            document.querySelector("#text-message").style.display = "none";
+
+            const data = {name, email, message}
+
+            fetch('https://contact-backed.herokuapp.com', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(data)
+            }).then(response => response.json()).then(data => {    
+                contactForm.reset();
+                document.querySelector("#success-message").style.display = "block";
+            }).catch(error => {
+                document.querySelector("#error-message").style.display = "block"
+            });
+
+        }
     }
 
     contactForm.addEventListener('submit', handlingForm)
